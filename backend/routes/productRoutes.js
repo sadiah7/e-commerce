@@ -3,21 +3,23 @@ const productController = require("../controllers/productController");
 const { isAuthenticatedUser, authorizeRoles } = require("../middleware/auth");
 const router = express.Router();
 
-router.get(
+router.get("/product", productController.getAllProducts);
+router.post(
   "/product",
   isAuthenticatedUser,
   authorizeRoles("admin"),
-  productController.getAllProducts
+  productController.createProduct
 );
-router.post("/product", isAuthenticatedUser, productController.createProduct);
 router.put(
   "/product/:id",
   isAuthenticatedUser,
+  authorizeRoles("admin"),
   productController.updateProduct
 );
 router.delete(
   "/product/:id",
   isAuthenticatedUser,
+  authorizeRoles("admin"),
   productController.deleteProduct
 );
 router.get("/product/:id", productController.getSingleProduct);
