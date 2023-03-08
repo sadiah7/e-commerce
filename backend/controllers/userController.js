@@ -4,6 +4,7 @@ const User = require("../schema/userSchema");
 const sendToken = require("../utils/jwtToken");
 const userSchema = require("../schema/userSchema");
 const sendEmail = require("../utils/sendEmail.js");
+const crypto = require("crypto");
 
 // Register a user
 const registerUser = catchAsyncErrors(async (req, res, next) => {
@@ -26,7 +27,6 @@ const registerUser = catchAsyncErrors(async (req, res, next) => {
 const loginUser = catchAsyncErrors(async (req, res, next) => {
   const { email, password } = req.body;
   //checking if user gave password and email
-
   if (!email || !password) {
     return next(new ErrorHandler("Please enter email & password", 404));
   }
@@ -34,13 +34,13 @@ const loginUser = catchAsyncErrors(async (req, res, next) => {
   const user = await User.findOne({ email }).select("+password");
 
   if (!user) {
-    return next(new ErrorHandler("Invalid Email or Password"), 401);
+    return next(new ErrorHandler("Invalid Email or Password", 401));
   }
 
-  const isPasswordMatched = user.comparePassword(password);
+  const isPasswordMatched = await user.comparePassword(password);
 
   if (!isPasswordMatched) {
-    return next(new ErrorHandler("Invalid Email or password"), 401);
+    return next(new ErrorHandler("Invalid Email or password", 401));
   }
   sendToken(user, 200, res);
 });
@@ -94,4 +94,39 @@ const forgotPassword = catchAsyncErrors(async (req, res, next) => {
   }
 });
 
-module.exports = { registerUser, loginUser, logoutUser, forgotPassword };
+//Reset Password
+const resetPassword = catchAsyncErrors(async (req, res, next) => {
+  //creating token hash
+  const resetPasswordToken = crypto
+    .createHash("sha256")
+    .update(req.params.token)
+    .digest("hex");
+
+  const user = await userSchema.findOne({
+    resetPasswordToken,
+    resetPasswordExpire: { $gt: Date.now() },
+  });
+
+  if (!user) {
+    return next(new ErrorHandler("Reset password invalid", 400));
+  }
+
+  if (req.body.password != req.body.confirmPassword) {
+    return next(new ErrorHandler("Password doesn't match", 400));
+  }
+
+  user.password = req.body.password;
+  user.resetPasswordExpire = undefined;
+  user.resetPasswordToken = undefined;
+
+  await user.save();
+
+  sendToken(user, 200, res);
+});
+module.exports = {
+  registerUser,
+  loginUser,
+  logoutUser,
+  forgotPassword,
+  resetPassword,
+};
