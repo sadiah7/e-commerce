@@ -4,11 +4,20 @@ const { isAuthenticatedUser, authorizeRoles } = require("../middleware/auth");
 const router = express.Router();
 
 router.get("/product", productController.getAllProducts);
+
+router.get("/allreviews", productController.getProductReviews);
+
 router.post(
   "/product",
   isAuthenticatedUser,
   authorizeRoles("admin"),
   productController.createProduct
+);
+
+router.put(
+  "/review",
+  isAuthenticatedUser,
+  productController.createProductReview
 );
 router.put(
   "/product/:id",
@@ -22,6 +31,12 @@ router.delete(
   authorizeRoles("admin"),
   productController.deleteProduct
 );
+router.delete(
+  "/allreviews",
+  isAuthenticatedUser,
+  productController.deleteReview
+);
+
 router.get("/product/:id", productController.getSingleProduct);
 
 module.exports = router;
