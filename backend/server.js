@@ -13,8 +13,8 @@ dotenv.config({ path: "backend/config/config.env" });
 
 connectDatabase();
 
-const server = app.listen(process.env.PORT, () => {
-  console.log(`Server started on ${process.env.PORT}`);
+const server = app.listen(4000, () => {
+  console.log(`Server started on 4000`);
 });
 
 process.on("unhandledRejection", (err) => {
