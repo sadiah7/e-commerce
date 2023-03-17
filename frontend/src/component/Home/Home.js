@@ -2,8 +2,8 @@ import React, { Fragment, useEffect } from "react";
 import { CgMouse } from "react-icons/all";
 import { MetaData } from "../layout/MetaData";
 import "./home.css";
-import { Product } from "./Product";
-import { getProduct } from "../../actions/productAction";
+import { ProductCard } from "./ProductCard";
+import { clearErrors, getProduct } from "../../actions/productAction";
 import { useSelector, useDispatch } from "react-redux";
 import { Loader } from "../layout/Loader/Loader";
 import { useAlert } from "react-alert";
@@ -29,11 +29,12 @@ export const Home = () => {
 
   useEffect(() => {
     if (error) {
-      return alert.error(error);
+      alert.error(error);
+      dispatch(clearErrors());
     }
 
     dispatch(getProduct());
-  }, [dispatch, error, alert]);
+  }, [dispatch, alert, error]);
 
   return (
     <Fragment>
@@ -55,7 +56,8 @@ export const Home = () => {
           <h2 className="homeHeading">Featured Products</h2>
 
           <div className="container" id="container">
-            {products && products.map((produ) => <Product product={produ} />)}
+            {products &&
+              products.map((produ) => <ProductCard product={produ} />)}
           </div>
         </Fragment>
       )}
