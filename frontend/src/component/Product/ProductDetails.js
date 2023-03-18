@@ -8,6 +8,7 @@ import ReactStars from "react-rating-stars-component";
 import { ReviewCard } from "./ReviewCard";
 import { Loader } from "../layout/Loader/Loader";
 import { useAlert } from "react-alert";
+import { MetaData } from "../layout/MetaData";
 
 export const ProductDetails = () => {
   const dispatch = useDispatch();
@@ -19,11 +20,11 @@ export const ProductDetails = () => {
   // console.log(error);
   useEffect(() => {
     if (error) {
-      alert.error("Product Not Available");
+      alert.error(error);
       dispatch(clearErrors());
     }
     dispatch(getProductDetails(id));
-  }, [dispatch, id, alert, product]);
+  }, [dispatch, id, alert]);
 
   const options = {
     edit: false,
@@ -40,6 +41,7 @@ export const ProductDetails = () => {
         <Loader />
       ) : (
         <Fragment>
+          <MetaData title={`${product.name}`} />
           <div className="ProductDetails">
             <div>
               <Carousel>

@@ -22,15 +22,13 @@ export const Home = () => {
   const alert = useAlert();
   const dispatch = useDispatch();
 
-  const { loading, error, products, productCount } = useSelector(
-    (state) => state.products
-  );
+  const { loading, error, products } = useSelector((state) => state.products);
   // console.log(productCount, loading, product);
 
   useEffect(() => {
     if (error) {
       alert.error(error);
-      dispatch(clearErrors());
+      return dispatch(clearErrors());
     }
 
     dispatch(getProduct());
