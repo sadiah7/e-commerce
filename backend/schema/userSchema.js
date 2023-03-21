@@ -41,6 +41,11 @@ const userSchema = new mongoodb.Schema({
     default: "user",
   },
 
+  createdAt: {
+    type: Date,
+    default: Date.now,
+  },
+
   resetPasswordToken: String,
   resetPasswordExpire: Date,
 });
