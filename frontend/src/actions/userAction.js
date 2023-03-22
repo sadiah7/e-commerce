@@ -16,7 +16,15 @@ import {
   UPDATE_PROFILE_FAIL,
   UPDATE_PROFILE_REQUEST,
   UPDATE_PROFILE_SUCCESS,
-  UPDATE_PROFILE_RESET,
+  UPDATE_PASSWORD_FAIL,
+  UPDATE_PASSWORD_REQUEST,
+  UPDATE_PASSWORD_SUCCESS,
+  FORGOT_PASSWORD_FAIL,
+  FORGOT_PASSWORD_REQUEST,
+  FORGOT_PASSWORD_SUCCESS,
+  RESET_PASSWORD_FAIL,
+  RESET_PASSWORD_REQUEST,
+  RESET_PASSWORD_SUCCESS,
 } from "../constants/userConstants";
 
 //login
@@ -110,6 +118,72 @@ export const updateProfile = (userData) => async (dispatch) => {
     console.log(error.response);
     dispatch({
       type: UPDATE_PROFILE_FAIL,
+      payload: error.response.data.error,
+    });
+  }
+};
+
+//update password
+export const updatePassword = (passwords) => async (dispatch) => {
+  try {
+    dispatch({ type: UPDATE_PASSWORD_REQUEST });
+
+    const config = { headers: { "Content-Type": "application/json" } };
+
+    const { data } = await axios.put(
+      `/user/password/update`,
+      passwords,
+      config
+    );
+
+    dispatch({ type: UPDATE_PASSWORD_SUCCESS, payload: data.success });
+  } catch (error) {
+    console.log(error.response);
+    dispatch({
+      type: UPDATE_PASSWORD_FAIL,
+      payload: error.response.data.error,
+    });
+  }
+};
+
+//forgot password
+export const forgotPassword = (email) => async (dispatch) => {
+  try {
+    dispatch({ type: FORGOT_PASSWORD_REQUEST });
+
+    const config = { headers: { "Content-Type": "application/json" } };
+
+    const { data } = await axios.post(`/user/password/reset`, email, config);
+
+    dispatch({ type: FORGOT_PASSWORD_SUCCESS, payload: data.message });
+  } catch (error) {
+    console.log(error.response);
+    dispatch({
+      type: FORGOT_PASSWORD_FAIL,
+      payload: error.response.data.error,
+    });
+  }
+};
+
+//reset password
+export const resetPassword = (token, passwords) => async (dispatch) => {
+  try {
+    dispatch({ type: RESET_PASSWORD_REQUEST });
+
+    const config = { headers: { "Content-Type": "application/json" } };
+
+    const { data } = await axios.put(
+      `/user/password/reset/${token}`,
+      passwords,
+      config
+    );
+
+    console.log(data);
+    dispatch({ type: RESET_PASSWORD_SUCCESS, payload: data.message });
+  } catch (error) {
+    console.log(error.response);
+    dispatch({
+      type: RESET_PASSWORD_FAIL,
       payload: error.response.data.error,
     });
   }
