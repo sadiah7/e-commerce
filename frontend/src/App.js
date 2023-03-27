@@ -24,9 +24,9 @@ import { ResetPassword } from "./component/User/ResetPassword.js";
 import { Cart } from "./component/Cart/Cart.js";
 import { Shipping } from "./component/Cart/Shipping.js";
 import { ConfirmOrder } from "./component/Cart/ConfirmOrder.js";
-// import { Payment } from "./component/Cart/Payment.js";
-// import { Elements } from "@stripe/react-stripe-js";
-// import { loadStripe } from "@stripe/stripe-js";
+import { Payment } from "./component/Cart/Payment.js";
+import { Elements } from "@stripe/react-stripe-js";
+import { loadStripe } from "@stripe/stripe-js";
 
 function App() {
   const { isAuthenticated, user } = useSelector((state) => state.user);
@@ -77,11 +77,11 @@ function App() {
         <ProtectedRoute exact path="/shipping" component={Shipping} />
         <ProtectedRoute exact path="/order/confirm" component={ConfirmOrder} />
 
-        {/* {stripeApiKey && (
+        {stripeApiKey && (
           <Elements stripe={loadStripe(stripeApiKey)}>
             <ProtectedRoute exact path="/process/payment" component={Payment} />
           </Elements>
-        )} */}
+        )}
         <Footer />
       </Router>
     </div>
