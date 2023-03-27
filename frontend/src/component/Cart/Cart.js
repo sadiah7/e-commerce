@@ -3,12 +3,13 @@ import "./cart.css";
 import { CartItemCard } from "./CartItemCard.js";
 import { useSelector, useDispatch } from "react-redux";
 import { addItemsToCart, removeItemsFromCart } from "../../actions/cartActions";
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import { Typography } from "@material-ui/core";
 import RemoveShoppingCartIcon from "@material-ui/icons/RemoveShoppingCart";
 
 export const Cart = () => {
   const dispatch = useDispatch();
+  const history = useHistory();
   const { cartItems } = useSelector((state) => state.cart);
 
   const increaseQuantity = (id, quantity, stock) => {
@@ -29,6 +30,10 @@ export const Cart = () => {
 
   const deleteCartItems = (id) => {
     dispatch(removeItemsFromCart(id));
+  };
+
+  const checkoutHandler = () => {
+    history.push("/login?redirect=shipping");
   };
 
   return (
@@ -96,7 +101,7 @@ export const Cart = () => {
               </div>
               <div></div>
               <div className="checkOutBtn">
-                <button>Check Out</button>
+                <button onClick={checkoutHandler}>Check Out</button>
               </div>
             </div>
           </div>
