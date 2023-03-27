@@ -9,8 +9,6 @@ const userRoutes = require("./routes/userRoutes");
 const orderRoutes = require("./routes/orderRoutes");
 const paymentRoutes = require("./routes/paymentRoutes");
 
-dotenv.config({ path: "backend/config/config.env" });
-
 app = express();
 app.use(express.json());
 app.use(cookieParser());
@@ -24,5 +22,6 @@ app.use("/pay", paymentRoutes);
 
 //MiddleWare for error
 app.use(errorMiddleware);
+dotenv.config({ path: "backend/config/config.env" });
 
 module.exports = app;

@@ -25,6 +25,7 @@ import { Cart } from "./component/Cart/Cart.js";
 import { Shipping } from "./component/Cart/Shipping.js";
 import { ConfirmOrder } from "./component/Cart/ConfirmOrder.js";
 import { Payment } from "./component/Cart/Payment.js";
+import { OrderSuccess } from "./component/Cart/OrderSuccess.js";
 import { Elements } from "@stripe/react-stripe-js";
 import { loadStripe } from "@stripe/stripe-js";
 
@@ -82,6 +83,8 @@ function App() {
             <ProtectedRoute exact path="/process/payment" component={Payment} />
           </Elements>
         )}
+
+        <ProtectedRoute exact path="/success" component={OrderSuccess} />
         <Footer />
       </Router>
     </div>
