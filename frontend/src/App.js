@@ -1,7 +1,7 @@
 // import logo from "./logo.svg";
 import "./App.css";
 import { Header } from "./component/layout/Header/Header";
-import { BrowserRouter as Router, Route } from "react-router-dom";
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import WebFont from "webfontloader";
 import React from "react";
 import axios from "axios";
@@ -29,6 +29,7 @@ import { OrderSuccess } from "./component/Cart/OrderSuccess.js";
 import { Elements } from "@stripe/react-stripe-js";
 import { loadStripe } from "@stripe/stripe-js";
 import { MyOrders } from "./component/Order/MyOrders";
+import { OrderDetails } from "./component/Order/OrderDetails";
 
 function App() {
   const { isAuthenticated, user } = useSelector((state) => state.user);
@@ -77,7 +78,6 @@ function App() {
         <Route exact path="/login" component={LoginSignUp} />
         <Route exact path="/cart" component={Cart} />
         <ProtectedRoute exact path="/shipping" component={Shipping} />
-        <ProtectedRoute exact path="/order/confirm" component={ConfirmOrder} />
 
         {stripeApiKey && (
           <Elements stripe={loadStripe(stripeApiKey)}>
@@ -88,6 +88,15 @@ function App() {
         <ProtectedRoute exact path="/success" component={OrderSuccess} />
 
         <ProtectedRoute exact path="/orders" component={MyOrders} />
+
+        <Switch>
+          <ProtectedRoute
+            exact
+            path="/order/confirm"
+            component={ConfirmOrder}
+          />
+          <ProtectedRoute exact path="/order/:id" component={OrderDetails} />
+        </Switch>
         <Footer />
       </Router>
     </div>

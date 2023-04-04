@@ -195,7 +195,7 @@
   }
   .reviewCardComment {
     color: rgba(0, 0, 0, 0.445);
-    font: 300 0.8vmax cursive;
+    font: 300 1vmax cursive;
   }
   
   .noReviews {

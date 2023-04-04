@@ -14,11 +14,11 @@ input::-webkit-inner-spin-button {
 }
 
 .greenColor{
-  color: green;
+  color: green !important;
 }
 
 .redColor{
-  color: red
+  color: red !important;
 }
 
 @media (prefers-reduced-motion: no-preference) {
