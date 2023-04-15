@@ -7,6 +7,12 @@ router.get("/product", productController.getAllProducts);
 
 router.get("/allreviews", productController.getProductReviews);
 
+router.get(
+  "/admin/products",
+  isAuthenticatedUser,
+  authorizeRoles("admin"),
+  productController.getAdminProducts
+);
 router.post(
   "/product",
   isAuthenticatedUser,
