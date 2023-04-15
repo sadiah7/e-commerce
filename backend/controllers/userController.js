@@ -248,13 +248,15 @@ const updateRole = catchAsyncErrors(async (req, res, next) => {
 const deleteUser = catchAsyncErrors(async (req, res, next) => {
   const user = await userSchema.findById(req.params.id);
 
-  //we will remove cloudinary later
-
   if (!user) {
     return next(
       new ErrorHandler(`User of id: ${req.params.id} does not Exist`, 400)
     );
   }
+
+  const imageId = user.avatar.public_id;
+
+  await cloudinary.v2.uploader.destroy(imageId);
 
   await userSchema.findByIdAndDelete(req.params.id);
 

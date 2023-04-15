@@ -33,7 +33,12 @@ import { OrderDetails } from "./component/Order/OrderDetails";
 import { Dashboard } from "./component/Admin/Dashboard";
 import { ProductList } from "./component/Admin/ProductList";
 import { NewProduct } from "./component/Admin/NewProduct";
-import { UpdateProduct } from "./component/Admin/UpdateProduct.js";
+import { UpdateProduct } from "./component/Admin/UpdateProduct";
+import { OrderList } from "./component/Admin/OrderList";
+import { ProcessOrder } from "./component/Admin/ProcessOrder";
+import { UsersList } from "./component/Admin/UsersList";
+import { UpdateUser } from "./component/Admin/UpdateUser";
+import { ProductReviews } from "./component/Admin/ProductReviews.js";
 
 function App() {
   const { isAuthenticated, user } = useSelector((state) => state.user);
@@ -128,6 +133,41 @@ function App() {
           exact
           path="/admin/product/:id"
           component={UpdateProduct}
+        />
+
+        <ProtectedRoute
+          isAdmin={true}
+          exact
+          path="/admin/orders"
+          component={OrderList}
+        />
+
+        <ProtectedRoute
+          isAdmin={true}
+          exact
+          path="/admin/order/:id"
+          component={ProcessOrder}
+        />
+
+        <ProtectedRoute
+          isAdmin={true}
+          exact
+          path="/admin/users"
+          component={UsersList}
+        />
+
+        <ProtectedRoute
+          isAdmin={true}
+          exact
+          path="/admin/user/:id"
+          component={UpdateUser}
+        />
+
+        <ProtectedRoute
+          isAdmin={true}
+          exact
+          path="/admin/reviews"
+          component={ProductReviews}
         />
         <Footer />
       </Router>
