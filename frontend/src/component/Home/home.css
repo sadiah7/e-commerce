@@ -1,9 +1,10 @@
 .banner {
-    background-image: url("../../images/cover.jfif");
+    /* background-image: url("../../images/cover.jfif"); */
+    background-image: url("C:/Users/Sadiah/Downloads/My project-1 (7).png");
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
-    height: 100vmin;
+    height: 75vmin;
     display: flex;
     flex-direction: column;
     text-align: center;
@@ -16,39 +17,43 @@
     margin: 5vmax;
   
     font: 600 2.5vmax "Roboto";
+    color:black;
   }
   
   .banner > p {
     font: 300 1.4vmax "Lucida Sans";
+    color: black;
   }
   
   .banner > a > button {
     margin-bottom: 5vmax;
     cursor: pointer;
-    background-color: white;
-    border: 1px solid white;
+    background-color: darkblue;
+    border: 1px solid black;
     border-radius: 0;
     padding: 1vmax;
     transition: all 0.5s;
     width: 9vmax;
     font: 500 1vmax "Roboto";
+    color: white;
+    margin-top: 18rem;
   }
   .banner > a > button:hover {
     background-color: rgba(255, 255, 255, 0);
-    color: white;
+    color: black
   }
   
-  .banner::after {
+  /* .banner::after {
     content: "";
     width: 100vw;
     height: 100vmin;
-    background-color: #ffffff;
+    background-color: white;
     position: absolute;
     top: 0%;
     left: 0;
     clip-path: polygon(100% 68%, 0 100%, 100% 100%);
     max-width: 100%;
-  }
+  } */
 
   .homeHeading {
     text-align: center;
@@ -136,5 +141,8 @@
     .productCard > div > span {
       margin: 0 0.5vmax;
       font: 300 1vmax "Roboto";
+    }
+    .banner > a > button {
+      margin-top: 5rem;
     }
   }

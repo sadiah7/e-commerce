@@ -42,8 +42,8 @@ export const Home = () => {
         <Fragment>
           <MetaData title="Home Page" />
           <div className="banner">
-            <p>Welcome to Ecommerce</p>
-            <h1>FIND AMAZING PRODUCTS BELOW</h1>
+            {/* <p>Welcome to Ecommerce</p>
+            <h1>FIND AMAZING PRODUCTS BELOW</h1> */}
 
             <a href="#container">
               <button>
