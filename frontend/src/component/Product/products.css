@@ -51,15 +51,15 @@
   }
   
   .page-item:hover {
-    background-color: rgb(230, 230, 230);
+    background-color:skyblue;
   }
   
   .page-item:hover .page-link {
-    color: rgb(0, 0, 0);
+    color: white;
   }
   
   .pageItemActive {
-    background-color: tomato;
+    background-color: darkblue;
   }
   
   .pageLinkActive {

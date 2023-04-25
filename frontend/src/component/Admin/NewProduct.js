@@ -30,14 +30,12 @@ export const NewProduct = () => {
   const [imagesPreview, setImagesPreview] = useState([]);
 
   const categories = [
-    "laptop",
-    "Footwear",
-    "Bottom",
-    "Tops",
-    "Attire",
-    "Camera",
-    "SmartPhones",
-    "machine",
+    "Box-File",
+    "Executive-File",
+    "Custamic-File",
+    "Office-File",
+    "Register",
+    "Portfolio",
   ];
 
   useEffect(() => {

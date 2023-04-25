@@ -42,8 +42,8 @@
     background-color: rgba(255, 255, 255, 0);
     color: black
   }
-  
-  /* .banner::after {
+/*   
+  .banner::after {
     content: "";
     width: 100vw;
     height: 100vmin;
@@ -51,7 +51,7 @@
     position: absolute;
     top: 0%;
     left: 0;
-    clip-path: polygon(100% 68%, 0 100%, 100% 100%);
+    clip-path: polygon(100% 100%, 0 100%, 100% 100%);
     max-width: 100%;
   } */
 
