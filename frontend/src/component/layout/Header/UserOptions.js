@@ -76,6 +76,7 @@ export const UserOptions = ({ user }) => {
           <img
             className="speedDialIcon"
             src={user.avatar.url ? user.avatar.url : profilePng}
+            // src="https://raw.githubusercontent.com/sadiah7/e-commerce/master/frontend/src/images/Profile.png"
             alt="profile"
           />
         }

@@ -1,4 +1,4 @@
-footer {
+/* footer {
     margin-top: 10vmax;
     padding: 2vmax;
     background-color: rgb(34, 33, 33);
@@ -70,4 +70,185 @@ footer {
   
   .rightFooter > a:hover {
     color: #eb4034;
-  }
+  } */
+  :root {
+    --pink: #e84393
+}
+
+footer {
+    /* margin-top: 10vmax; */
+    padding: 1vmax;
+    background-color: rgb(34, 33, 33);
+    color: white;
+    display: flex;
+    align-items: center;
+    margin:auto
+}
+
+.leftFooter {
+    width: 20%;
+    display: flex;
+
+    flex-direction: column;
+    align-items: center;
+}
+
+.leftFooter>h4 {
+    font-family: "Roboto";
+    font-size: 1vmax;
+}
+
+.leftFooter>p {
+    text-align: center;
+    font-size: 1.2vmax;
+    font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+        "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+}
+
+.leftFooter>img {
+    width: 10vmax;
+    margin: 1vmax;
+    cursor: pointer;
+}
+
+.midFooter {
+    width: 60%;
+
+    text-align: center;
+    text-decoration: none;
+}
+
+.midFooter>h1 {
+    font-size: 4vmax;
+    font-family: "Roboto";
+    color: #eb4034;
+    text-decoration: none;
+}
+
+.midFooter>p {
+    max-width: 60%;
+    font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+    margin: 1vmax auto;
+    text-decoration: none;
+}
+
+.box-container .box a {
+    text-decoration: none;
+    color: aqua;
+}
+
+.box-container .box a:hover {
+    color: var(--pink);
+    text-decoration: underline;
+}
+
+.rightFooter {
+    width: 20%;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.rightFooter>h4 {
+    font-family: "Roboto";
+    font-size: 1.4vmax;
+    text-decoration: underline;
+}
+
+.rightFooter>a {
+    text-decoration: none;
+    font-size: 1.3vmax;
+    font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+    color: white;
+    transition: all 0.5s;
+    margin: 0.5vmax;
+}
+
+.rightFooter>a:hover {
+    color: #eb4034;
+}
+
+/*new css file*/
+/* * {
+    text-decoration: none;
+    text-transform: capitalize;
+    transition: .2s linear;
+}
+
+html {
+    font-size: 62.5%;
+    scroll-behavior: smooth;
+    scroll-padding-top: 6rem;
+    overflow-x: hidden;
+}
+
+section {
+    padding: 2rem 9%;
+}
+
+.heading {
+    text-align: center;
+    font-size: 4rem;
+    color: #333;
+    padding: 1rem;
+    margin: 2rem 0;
+    background: rgba(255, 51, 153, .05);
+}
+
+.heading span {
+    color: var(--pink);
+}
+
+.btn {
+    display: inline-block;
+    margin-top: 1rem;
+    border-radius: 5rem;
+    background: #333;
+    color: #fff;
+    padding: .9rem 3.5rem;
+    cursor: pointer;
+    font-size: 1.7rem;
+}
+
+.btn:hover {
+    background: var(--pink);
+}
+
+.footer {
+    margin-top: 10vmax;
+    padding: 2vmax;
+    background-color: black;
+}
+
+.footer .box-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+}
+
+.footer .box-container h3 {
+    color: #fff;
+}
+
+.footer .box-container .box {
+    flex: 1 1 25rem;
+}
+
+.footer .box-container .box h3 {
+    color: #fff;
+    font-size: 1.5rem;
+    padding: 1rem 0;
+}
+
+.footer .box-container .box a {
+    display: block;
+    color: #fff;
+    font-size: 1.5rem;
+    padding: 1rem 0;
+}
+
+.footer .box-container .box a:hover {
+    color: var(--pink);
+    text-decoration: underline;
+} */
