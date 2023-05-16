@@ -40,6 +40,7 @@ import { UsersList } from "./component/Admin/UsersList";
 import { UpdateUser } from "./component/Admin/UpdateUser";
 import { ProductReviews } from "./component/Admin/ProductReviews.js";
 import { AboutUs } from "./component/layout/AboutUs/AboutUs.js";
+import { ContactUs } from "./component/layout/ContactUs/ContactUs";
 
 function App() {
   const { isAuthenticated, user } = useSelector((state) => state.user);
@@ -73,6 +74,7 @@ function App() {
         <Route exact path="/product/:id" component={ProductDetails} />
         <Route exact path="/products" component={Products} />
         <Route exact path="/about" component={AboutUs} />
+        <Route exact path="/contact" component={ContactUs} />
         <Route exact path="/products/:keyword" component={Products} />
         <Route exact path="/search" component={Search} />
         <ProtectedRoute exact path="/account" component={Profile} />
